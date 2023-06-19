@@ -25,18 +25,20 @@ Partial Class VRMService
         '        myService.OnDebug()
         '        System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite)
         '#Else
-        '                    'Dim ServicesToRun() As System.ServiceProcess.ServiceBase
+        '                            'Dim ServicesToRun() As System.ServiceProcess.ServiceBase
 
-        '                    '    More than one NT Service may run within the same process. To add
-        '                    '    another service to this process, change the following line to
-        '                    '    create a second service object. For example,
+        '                            '    More than one NT Service may run within the same process. To add
+        '                            '    another service to this process, change the following line to
+        '                            '    create a second service object. For example,
 
-        '                    '    ServicesToRun = New System.ServiceProcess.ServiceBase () {New Service1, New MySecondUserService}
+        '                            '    ServicesToRun = New System.ServiceProcess.ServiceBase () {New Service1, New MySecondUserService}
 
-        '                    'ServicesToRun = New System.ServiceProcess.ServiceBase() {New Service1}
+        '                            'ServicesToRun = New System.ServiceProcess.ServiceBase() {New Service1}
 
-        '                    'System.ServiceProcess.ServiceBase.Run(ServicesToRun)
+        '                            'System.ServiceProcess.ServiceBase.Run(ServicesToRun)
         '#End If
+
+
 
 
         Dim ServicesToRun() As System.ServiceProcess.ServiceBase

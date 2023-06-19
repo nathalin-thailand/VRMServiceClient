@@ -8,6 +8,7 @@ Imports RestSharp
 
 Public Class VRMService
 
+    Dim ManchineEntityId As Long
 
     Dim GetDOAOnline As Boolean = False
     Dim StatusRun As Boolean = False
@@ -97,6 +98,16 @@ ErrPoint:
         ConnLoc.Open()
 
 
+        Dim Rs As New ADODB.Recordset
+        Rs = ReadSQL("select top 1 * from tbSystemOfflineConfig where keytype = 'Machine' and keyword = 'Entity' ", ConnLoc)
+        If (Rs.RecordCount <> 0) Then
+            ManchineEntityId = CLng(Rs.Fields("config").Value)
+        End If
+        RsClose(Rs)
+        If (ManchineEntityId = 0) Then GoTo JmpOut
+
+
+
         tbConfig.Columns.Clear()
 
         tbConfig.Columns.AddRange(New DataColumn() {
@@ -107,8 +118,12 @@ ErrPoint:
 
         tbConfig.Rows.Clear()
 
-        Dim Rs As New ADODB.Recordset
-        Rs = ReadSQL("select * from tbSystemOfflineConfig", ConnLoc)
+
+
+
+
+        Rs = New ADODB.Recordset
+        Rs = ReadSQL("select keyType , keyWord , config  from tbSystemOfflineConfig where entityid = " & ManchineEntityId & "", ConnLoc)
 
         Dim zStrItem(Rs.Fields.Count - 1) As String
         Do Until Rs.EOF
@@ -390,31 +405,51 @@ JmpOut:
                 .Str_50_08 = RsNullDB(Rs.Fields("Str_50_08"))
                 .Str_50_09 = RsNullDB(Rs.Fields("Str_50_09"))
                 .Str_50_10 = RsNullDB(Rs.Fields("Str_50_10"))
+
                 .Str_150_01 = RsNullDB(Rs.Fields("Str_150_01"))
                 .Str_150_02 = RsNullDB(Rs.Fields("Str_150_02"))
                 .Str_150_03 = RsNullDB(Rs.Fields("Str_150_03"))
                 .Str_150_04 = RsNullDB(Rs.Fields("Str_150_04"))
                 .Str_150_05 = RsNullDB(Rs.Fields("Str_150_05"))
+                .Str_150_06 = RsNullDB(Rs.Fields("Str_150_06"))
+                .Str_150_07 = RsNullDB(Rs.Fields("Str_150_07"))
+                .Str_150_08 = RsNullDB(Rs.Fields("Str_150_08"))
+                .Str_150_09 = RsNullDB(Rs.Fields("Str_150_09"))
+                .Str_150_10 = RsNullDB(Rs.Fields("Str_150_10"))
+
                 .Str_250_01 = RsNullDB(Rs.Fields("Str_250_01"))
                 .Str_250_02 = RsNullDB(Rs.Fields("Str_250_02"))
                 .Str_250_03 = RsNullDB(Rs.Fields("Str_250_03"))
                 .Str_250_04 = RsNullDB(Rs.Fields("Str_250_04"))
                 .Str_250_05 = RsNullDB(Rs.Fields("Str_250_05"))
+
                 .Str_500_01 = RsNullDB(Rs.Fields("Str_500_01"))
                 .Str_500_02 = RsNullDB(Rs.Fields("Str_500_02"))
                 .Str_500_03 = RsNullDB(Rs.Fields("Str_500_03"))
                 .Str_500_04 = RsNullDB(Rs.Fields("Str_500_04"))
                 .Str_500_05 = RsNullDB(Rs.Fields("Str_500_05"))
+
                 .Str_Max_01 = RsNullDB(Rs.Fields("Str_Max_01"))
                 .Str_Max_02 = RsNullDB(Rs.Fields("Str_Max_02"))
                 .Str_Max_03 = RsNullDB(Rs.Fields("Str_Max_03"))
                 .Str_Max_04 = RsNullDB(Rs.Fields("Str_Max_04"))
                 .Str_Max_05 = RsNullDB(Rs.Fields("Str_Max_05"))
+                .Str_Max_06 = RsNullDB(Rs.Fields("Str_Max_06"))
+                .Str_Max_07 = RsNullDB(Rs.Fields("Str_Max_07"))
+                .Str_Max_08 = RsNullDB(Rs.Fields("Str_Max_08"))
+                .Str_Max_09 = RsNullDB(Rs.Fields("Str_Max_09"))
+                .Str_Max_10 = RsNullDB(Rs.Fields("Str_Max_10"))
+
                 .DateTime_01 = RsNullDT(Rs.Fields("DateTime_01"))
                 .DateTime_02 = RsNullDT(Rs.Fields("DateTime_02"))
                 .DateTime_03 = RsNullDT(Rs.Fields("DateTime_03"))
                 .DateTime_04 = RsNullDT(Rs.Fields("DateTime_04"))
                 .DateTime_05 = RsNullDT(Rs.Fields("DateTime_05"))
+                .DateTime_06 = RsNullDT(Rs.Fields("DateTime_06"))
+                .DateTime_07 = RsNullDT(Rs.Fields("DateTime_07"))
+                .DateTime_08 = RsNullDT(Rs.Fields("DateTime_08"))
+                .DateTime_09 = RsNullDT(Rs.Fields("DateTime_09"))
+                .DateTime_10 = RsNullDT(Rs.Fields("DateTime_10"))
 
                 .Float_01 = RsNullDB(Rs.Fields("Float_01"))
                 .Float_02 = RsNullDB(Rs.Fields("Float_02"))
@@ -436,6 +471,17 @@ JmpOut:
                 .Float_18 = RsNullDB(Rs.Fields("Float_18"))
                 .Float_19 = RsNullDB(Rs.Fields("Float_19"))
                 .Float_20 = RsNullDB(Rs.Fields("Float_20"))
+                .Float_21 = RsNullDB(Rs.Fields("Float_21"))
+                .Float_22 = RsNullDB(Rs.Fields("Float_22"))
+                .Float_23 = RsNullDB(Rs.Fields("Float_23"))
+                .Float_24 = RsNullDB(Rs.Fields("Float_24"))
+                .Float_25 = RsNullDB(Rs.Fields("Float_25"))
+                .Float_26 = RsNullDB(Rs.Fields("Float_26"))
+                .Float_27 = RsNullDB(Rs.Fields("Float_27"))
+                .Float_28 = RsNullDB(Rs.Fields("Float_28"))
+                .Float_29 = RsNullDB(Rs.Fields("Float_29"))
+                .Float_30 = RsNullDB(Rs.Fields("Float_30"))
+
 
                 .Int_01 = RsNullDB(Rs.Fields("Int_01"))
                 .Int_02 = RsNullDB(Rs.Fields("Int_02"))
@@ -459,11 +505,19 @@ JmpOut:
                 .num_180_03 = RsNullDB(Rs.Fields("num_180_03"))
                 .num_180_04 = RsNullDB(Rs.Fields("num_180_04"))
                 .num_180_05 = RsNullDB(Rs.Fields("num_180_05"))
+                .num_180_06 = RsNullDB(Rs.Fields("num_180_06"))
+                .num_180_07 = RsNullDB(Rs.Fields("num_180_07"))
+                .num_180_08 = RsNullDB(Rs.Fields("num_180_08"))
+                .num_180_09 = RsNullDB(Rs.Fields("num_180_09"))
+                .num_180_10 = RsNullDB(Rs.Fields("num_180_10"))
+
+
                 .bit_01 = RsNullDB(Rs.Fields("bit_01"))
                 .bit_02 = RsNullDB(Rs.Fields("bit_02"))
                 .bit_03 = RsNullDB(Rs.Fields("bit_03"))
                 .bit_04 = RsNullDB(Rs.Fields("bit_04"))
                 .bit_05 = RsNullDB(Rs.Fields("bit_05"))
+
                 .FileType = RsNullDB(Rs.Fields("FileType"))
                 .FileDisposition = RsNullDB(Rs.Fields("FileDisposition"))
                 .FileLength = RsNullDB(Rs.Fields("FileLength"))
@@ -472,8 +526,12 @@ JmpOut:
                 .createDate = RsNullDT(Rs.Fields("createDate"))
                 .modifyBy = RsNullDB(Rs.Fields("modifyBy"))
                 .modifyDate = RsNullDT(Rs.Fields("modifyDate"))
+
                 .Inf_Status = RsNullDB(Rs.Fields("Inf_Status"))
                 .Inf_Datetime = RsNullDT(Rs.Fields("Inf_Datetime"))
+                '.Inf_Remark = RsNullDT(Rs.Fields("Inf_Remark"))
+
+
             End With
             listTB.Add(iOffline)
             Rs.MoveNext()
@@ -502,15 +560,18 @@ JmpOut:
 
 
         If (data_response.IsSuccessful) Then
-            If Rs.RecordCount <> 0 Then
-                Dim RsUp As New ADODB.Recordset
-                RsUp = WriteSQL("exec spInterfaceClient2Server_runComplete '" & entityId & "','" & RunDateTime & "'", ConnLoc)
-                RsClose(RsUp)
+            If (UCase(data_response.StatusCode) = System.Net.HttpStatusCode.OK) Then
+
+                If Rs.RecordCount <> 0 Then
+                    Dim RsUp As New ADODB.Recordset
+                    RsUp = WriteSQL("exec spInterfaceClient2Server_runComplete '" & entityId & "','" & RunDateTime & "'", ConnLoc)
+                    RsClose(RsUp)
+                End If
             End If
 
         Else
 
-            Dim lines() As String = {"Error asynchronous Client2Server : " + DateTime.Now.ToString()}
+                Dim lines() As String = {"Error asynchronous Client2Server : " + DateTime.Now.ToString()}
             System.IO.File.AppendAllLines(LogPath, lines)
 
         End If

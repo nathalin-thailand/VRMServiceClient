@@ -83,6 +83,14 @@
 	Public Property Str_150_03 As String
 	Public Property Str_150_04 As String
 	Public Property Str_150_05 As String
+	Public Property Str_150_06 As String
+	Public Property Str_150_07 As String
+	Public Property Str_150_08 As String
+	Public Property Str_150_09 As String
+	Public Property Str_150_10 As String
+
+
+
 
 	Public Property Str_250_01 As String
 	Public Property Str_250_02 As String
@@ -103,6 +111,11 @@
 	Public Property Str_Max_03 As String
 	Public Property Str_Max_04 As String
 	Public Property Str_Max_05 As String
+	Public Property Str_Max_06 As String
+	Public Property Str_Max_07 As String
+	Public Property Str_Max_08 As String
+	Public Property Str_Max_09 As String
+	Public Property Str_Max_10 As String
 
 
 	Public Property DateTime_01 As DateTime?
@@ -110,6 +123,11 @@
 	Public Property DateTime_03 As DateTime?
 	Public Property DateTime_04 As DateTime?
 	Public Property DateTime_05 As DateTime?
+	Public Property DateTime_06 As DateTime?
+	Public Property DateTime_07 As DateTime?
+	Public Property DateTime_08 As DateTime?
+	Public Property DateTime_09 As DateTime?
+	Public Property DateTime_10 As DateTime?
 
 
 	Public Property Float_01 As Double?
@@ -132,7 +150,16 @@
 	Public Property Float_18 As Double?
 	Public Property Float_19 As Double?
 	Public Property Float_20 As Double?
-
+	Public Property Float_21 As Double?
+	Public Property Float_22 As Double?
+	Public Property Float_23 As Double?
+	Public Property Float_24 As Double?
+	Public Property Float_25 As Double?
+	Public Property Float_26 As Double?
+	Public Property Float_27 As Double?
+	Public Property Float_28 As Double?
+	Public Property Float_29 As Double?
+	Public Property Float_30 As Double?
 
 	Public Property Int_01 As Long?
 	Public Property Int_02 As Long?
@@ -156,6 +183,12 @@
 	Public Property num_180_03 As Decimal?
 	Public Property num_180_04 As Decimal?
 	Public Property num_180_05 As Decimal?
+	Public Property num_180_06 As Decimal?
+	Public Property num_180_07 As Decimal?
+	Public Property num_180_08 As Decimal?
+	Public Property num_180_09 As Decimal?
+	Public Property num_180_10 As Decimal?
+
 
 	Public Property bit_01 As Boolean?
 	Public Property bit_02 As Boolean?
